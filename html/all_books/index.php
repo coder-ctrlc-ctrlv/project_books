@@ -5,8 +5,8 @@
     $books_active = "active";
     include '../header.php';
 ?>
+<div class="content">
     <h1>Книги</h1>
-<!-- Завершение контента -->
 </div>
 <?php include '../footer.php' ?>
  

@@ -4,8 +4,8 @@
     $keywords = "Ключевые слова страницы сайта";
     include '../header.php';
 ?>
+<div class="content">
     <h1>Отдельная книга</h1>
-<!-- Завершение контента -->
 </div>
 <?php include '../footer.php' ?>
  

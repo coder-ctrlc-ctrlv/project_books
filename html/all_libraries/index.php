@@ -5,8 +5,8 @@
     $libraries_active = "active";
     include '../header.php';
 ?>
+<div class="content">
     <h1>Библиотеки</h1>
-<!-- Завершение контента -->
 </div>
 <?php include '../footer.php' ?>
  

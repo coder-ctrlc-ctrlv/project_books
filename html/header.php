@@ -15,7 +15,7 @@
 <!-- Оболочка -->
     <div class="wrapper">
 <!-- Весь контент -->
-        <div class="content">
+        <div class="header">
 <!-- MENU -->
             <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                 <div class="container-fluid">
@@ -42,4 +42,21 @@
             </nav>
             <img class="header_photo" src="../img/header3.jpg" alt="">
             <img class="uzor" src="../img/uzor1.jpg" alt="">
+        </div>
+<!--Подключение к базе данных-->
+        <?php
+        $host = '127.0.0.1';
+        $db = 'base_for_books';
+        $user = 'user';
+        $pass = 'user';
+        $charset = 'utf8';
+        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+        $opt = [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ];
+        $pdo = new PDO($dsn, $user, $pass, $opt);
+        ?>
+
 

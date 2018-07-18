@@ -5,8 +5,21 @@
     $authors_active = "active";
     include '../header.php';
 ?>
-    <h1>Авторы</h1>
-<!-- Завершение контента -->
+<div class="content">
+    <h1>Список авторов</h1>
+    <?php
+    $stmt = $pdo->query('SELECT * from authors');
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    while($row = $stmt->fetch())
+    {   
+        echo "<div class='block'>";
+        echo "<p class='center_author'>" . $row['author'] . "</p>";
+        if ($row['author']=="Стивен Кинг"){
+            echo "<img class='author' src=''>";
+        }
+        echo "</div>";
+    }
+    ?>
 </div>
 <?php include '../footer.php' ?>
 
