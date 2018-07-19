@@ -5,7 +5,15 @@
     include '../header.php';
 ?>
 <div class="content">
+    <?php
+    $stmt = $pdo->query('SELECT * from authors');
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    while ($row = $stmt->fetch()) {
+        
+    }
+    ?>
     <h1>Отдельный автор</h1>
+    
 </div>
 <?php include '../footer.php' ?>
  

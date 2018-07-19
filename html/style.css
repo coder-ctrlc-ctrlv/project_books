@@ -1,3 +1,4 @@
+/*ОБОЛОЧКИ*/
 html,
 body {
     height: 100%;
@@ -27,13 +28,8 @@ body {
     color: #e6e6e6;
     padding-top:0.5%;
 }
-h1 {
-    text-align: center;
-}
-.center_author {
-    font-size: 1.5em;
-    text-align: center;
-}
+/*КОНЕЦ ОБОЛОЧЕК*/
+/*HEADER+ЗАГЛАВИЕ*/
 .header_photo {
     width: 100%;
 }
@@ -42,13 +38,36 @@ h1 {
     display:block;
     margin:auto;
 }
-.block {
-    margin-left:10%;
-    margin-right:10%;
-    background: #e8e8e8;
-    margin-top: 5%;
-    height: 400px;
+h1 {
+    text-align: center;
 }
+/*ТАБЛИЦЫ*/
+.name:hover {
+    background: #1c1c1c;
+    color: #e6e6e6;
+    cursor:pointer;
+}
+td {
+    height: 70px;
+    background: #e8e8e8;
+    font-size: 1.6em;
+    padding:5px;
+    border-bottom: 1px solid #1c1c1c;
+    border-left: 1px solid #1c1c1c;
+    text-align: center;
+}
+.th {
+    height: 70px;
+    background: #1c1c1c;
+    font-size: 1.6em;
+    color: #e6e6e6;
+    text-align: center;
+}
+table {
+    border: 1px solid #1c1c1c;
+    margin-bottom:20px;
+}
+/*КОНЕЦ ТАБЛИЦ*/
 
 
 
