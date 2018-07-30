@@ -13,25 +13,35 @@
             <td class="th">Количество книг</td>
         </tr>
         <?php
-        echo $kolvo;
-        $stmt = $pdo->query('SELECT * from authors');
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        while ($row = $stmt->fetch()) {
-            echo "<tr>";
-            echo "<td class='name' onClick='location.href=\"../author\"'>" . $row['author'] . "</td>";
-            $res = $pdo->prepare('select * from authors_and_books where id_author=?');
-            $res->execute(array($row['id']));
-            foreach ($res as $rows)
-            {
-                $kolvo++;
+            //номер страницы
+            if (isset($_GET['page'])){
+                $page = $_GET['page'];
+            }else $page = 1;
+            $previous = $page - 1;
+            $next = $page + 1;
+            //количество выводимых записей
+            $kolvo = 10;
+            //номер записи, с которой начинается вывод на странице
+            $start = ($page * $kolvo) - $kolvo;
+            //количество всех записей
+            $stmt = $pdo->query('SELECT COUNT(*) FROM authors');
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $row = $stmt->fetch();
+            $all_record = $row['COUNT(*)'];
+            //количетсво страниц
+            $str_pag = ceil($all_record / $kolvo);
+            $stmt = $pdo->prepare('select a.id, author, count(*) from authors as a join authors_and_books as ab on a.id=ab.id_author group by a.id limit :start, :kolvo');
+            $stmt->execute(array(':start' => $start, ':kolvo' => $kolvo));
+            foreach ($stmt as $row) {
+                $id_a=$row['id'];
+                echo "<tr>";
+                echo "<td class='name' onClick='location.href=\"../author?id=$id_a\"'>" . $row['author'] . "</td>";
+                echo "<td>" . $row['count(*)'] . "</td>";
+                echo "</tr>";
             }
-            echo "<td>" . $kolvo . "</td>";
-            echo "</tr>";
-            $kolvo=0;
-        }
         ?>
     </table>
-
+    <?php include '../pagination.php' ?>
 </div>
 <?php include '../footer.php' ?>
 

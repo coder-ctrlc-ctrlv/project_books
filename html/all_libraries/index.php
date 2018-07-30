@@ -13,23 +13,36 @@
             <td class="th">Количество представленных в ней книг</td>
         </tr>
         <?php
-        $stmt = $pdo->query('SELECT * from libraries');
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        while ($row = $stmt->fetch()) {
-            echo "<tr>";
-            echo "<td class='name' onClick='location.href=\"../library\"'>" . $row['name_library'] . "</td>";
-            $res = $pdo->prepare('select * from libraries_and_books where id_library=?');
-            $res->execute(array($row['id']));
-            foreach ($res as $rows)
-            {
-                $kolvo++;
+            //номер страницы
+            if (isset($_GET['page'])){
+                $page = $_GET['page'];
+            }else $page = 1;
+            $previous = $page - 1;
+            $next = $page + 1;
+            //количество выводимых записей
+            $kolvo = 10;
+            //номер записи, с которой начинается вывод на странице
+            $start = ($page * $kolvo) - $kolvo;
+            //количество всех записей
+            $stmt = $pdo->query('SELECT COUNT(*) FROM libraries');
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $row = $stmt->fetch();
+            $all_record = $row['COUNT(*)'];
+            //количетсво страниц
+            $str_pag = ceil($all_record / $kolvo);
+            $stmt = $pdo->prepare('select l.id, name_library, count(*) from libraries as l join libraries_and_books as lb on l.id=lb.id_library group by l.id limit :start, :kolvo');
+            $stmt->execute(array(':start' => $start, ':kolvo' => $kolvo));
+            foreach ($stmt as $row) {
+                $id_l=$row['id'];
+                echo "<tr>";
+                echo "<tr>";
+                echo "<td class='name' onClick='location.href=\"../library?id=$id_l\"'>" . $row['name_library'] . "</td>";
+                echo "<td>" . $row['count(*)'] . "</td>";
+                echo "</tr>";
             }
-            echo "<td>" . $kolvo . "</td>";
-            $kolvo=0;
-            echo "</tr>";
-        }
         ?>
     </table>
+    <?php include '../pagination.php' ?>
 </div>
 <?php include '../footer.php' ?>
  

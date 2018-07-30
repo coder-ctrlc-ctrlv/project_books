@@ -1,5 +1,5 @@
 <!-- footer -->
-        <div id="footer">
+        <div class="footer">
             <img class="uzor" src="../img/uzor1.jpg" alt="">
             <div class="footer1"></div>
             <div class="footer2">

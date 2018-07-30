@@ -38,7 +38,7 @@ body {
     display:block;
     margin:auto;
 }
-h1 {
+h1, h3, h2 {
     text-align: center;
 }
 /*ТАБЛИЦЫ*/
@@ -67,8 +67,135 @@ table {
     border: 1px solid #1c1c1c;
     margin-bottom:20px;
 }
+.td_la {
+    border: 10px solid white;
+}
+.td_la:hover {
+    background: #1c1c1c;
+    color: #e6e6e6;
+    cursor:pointer;
+}
+.col-md-6 {
+    margin-left: 25%;
+}
 /*КОНЕЦ ТАБЛИЦ*/
-
+.book_info {
+    background-color: #e8e8e8;
+    padding: 2%;
+    font-size: 1.3em;
+    border: 1px solid #1c1c1c;
+    border-radius: 10px;
+}
+/*ФОРМА ОТЗЫВОВ*/
+.btn_rev {
+    color:#1c1c1c;
+    padding: 10px 20px;
+    text-align:center;
+    display: block;
+    background-image: linear-gradient(to left,transparent,transparent 50%,#1c1c1c 50%,#1c1c1c);
+    background-position: 100% 0;
+    background-size: 200% 100%;
+    transition: all .25s ease-in;
+    font: 400 18px tahoma;
+    border: 1px solid #1c1c1c;
+    float: right;
+}
+.btn_rev:hover {
+    background-position: 0 0;
+    color:#fff;
+}
+.dop_div {
+    margin-top:60px;
+}
+#rating_error, #name_error, #message_error, #msg_error {
+    color: red;
+}
+#end_info {
+    text-align: center;
+    color: green;
+    font-size: 1.4em;
+}
+/*ВЫВОД ОТЗЫВОВ*/
+.review {
+    margin-bottom: 20px;
+    padding: 2%;
+    font-size: 1.3em;
+    border:1px solid #1c1c1c;
+}
+.line {
+    border: 1px solid #1c1c1c;
+    width: 30%;
+    margin-top:10px;
+    margin-bottom: 15px;
+}
+#pages {
+    text-align: center;
+}
+/*ГЛАВНАЯ СТРАНИЦА*/
+.left_content {
+    width: 45%;
+    margin-right: 10%;
+    float: left;
+}
+.right_content {
+    float: left;
+    width: 45%;
+}
+.center_content {
+    margin-top:300px;
+}
+.last_reviews {
+    border: 1px solid black;
+    background: #E8E8E8;
+}
+.main_review {
+    margin: 30px 50px;
+    padding: 2%;
+    font-size: 1.3em;
+    border:1px solid #1c1c1c;
+    background: white;
+}
+/*СПИСКИ*/
+.square {
+    margin: 0;
+    counter-reset: li;
+    list-style: none;
+    background:#E8E8E8;
+    padding: 10px;
+}
+.square li {
+    position: relative;
+    margin: 0 0 10px 2em;
+    padding: 4px 8px;
+    border-top: 2px solid #787A77;
+    transition: .3s linear;
+}
+.square li:last-child {margin-bottom: 0;}
+.square li:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    top: -2px;
+    left: -2em;
+    width: 2em;
+    box-sizing: border-box;
+    margin-right: 8px;
+    padding: 4px;
+    border-top: 2px solid #787A77;
+    border-left: 2px solid transparent;
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    background: #787A77;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    transition: .3s linear;
+}
+.square li:hover {border-top: 2px solid #389F70; cursor: pointer}
+.square li:hover:before {
+    border: 2px solid #389F70;
+    background: #98EABA;
+}
 
 
 
