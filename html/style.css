@@ -78,6 +78,9 @@ table {
 .col-md-6 {
     margin-left: 25%;
 }
+.table_aut_b {
+    width: 100%;
+}
 /*КОНЕЦ ТАБЛИЦ*/
 .book_info {
     background-color: #e8e8e8;
@@ -196,7 +199,98 @@ table {
     border: 2px solid #389F70;
     background: #98EABA;
 }
+/*ФИЛЬТРАЦИЯ*/
+.sortirovka {
+    text-align: center;
+    margin: 30px 0px;
+}
+.philtr {
+    font-size: 1.3em;
+    font-weight: 700;
+}
+.btn_philtr {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 17px;
+    color: black;
+}
+.btn_philtr:hover {
+    background-color: #1c1c1c;
+    color: #e6e6e6;
+    transition: ease 0.6s;
+}
+/* Базовый контейнер табов */
+.tabs {
+    min-width: 320px;
+    max-width: 800px;
+    padding: 0px;
+    margin: 0 auto;
+}
+/* Стили секций с содержанием */
+.tabs>section {
+    display: none;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #ddd;
+}
+.tabs>section>p {
+    margin: 0 0 5px;
+    line-height: 1.5;
+    color: #383838;
+}
 
-
-
+/* Прячем чекбоксы */
+.tabs>input {
+    display: none;
+    position: absolute;
+}
+/* Стили переключателей вкладок (табов) */
+.tabs>label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: #aaa;
+    border: 0px solid #ddd;
+    border-width: 1px 1px 1px 1px;
+    background: #f1f1f1;
+    border-radius: 3px 3px 0 0;
+}
+/* Изменения стиля переключателей вкладок при наведении */
+.tabs>label:hover {
+    color: #888;
+    cursor: pointer;
+}
+/* Стили для активной вкладки */
+.tabs>input:checked+label {
+    color: #555;
+    border-top: 1px solid black;
+    border-bottom: 1px solid #fff;
+    background: #fff;
+}
+/* Активация секций с помощью псевдокласса :checked */
+#tab1:checked~#content-tab1, #tab2:checked~#content-tab2 {
+    display: block;
+}
+/* Убираем текст с переключателей
+* и оставляем иконки на малых экранах
+*/
+@media screen and (max-width: 680px) {
+    .tabs>label {
+        font-size: 0;
+    }
+    .tabs>label:before {
+        margin: 0;
+        font-size: 18px;
+    }
+}
+/* Изменяем внутренние отступы
+*  переключателей для малых экранов
+*/
+@media screen and (max-width: 400px) {
+    .tabs>label {
+        padding: 15px;
+    }
+}
 

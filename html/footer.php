@@ -9,6 +9,8 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
             <script src="../bootstrap/js/popper.min.js"></script>
             <script src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- select2-->
+            <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
         </div>
 <!-- Завершение wrapper -->
     </div>

@@ -13,7 +13,7 @@
             } else {
                 $active_page = '';
             }
-            echo "<li class='page-item $active_page'><a class='page-link' href='?page=$i'>" . $i . " </a></li>";
+            echo "<li class='page-item $active_page'><a class='page-link' href='?page=$i&filtration=$filtration'>" . $i . " </a></li>";
         }
         ?>
         <li class="page-item <?php if ($page == $str_pag){echo "disabled";} ?>">

@@ -7,7 +7,9 @@
     <meta name="Description" content=” <?php echo $description ?> “>
 <!-- style -->
     <link rel="stylesheet" href="../style.css"
-<!-- Bootstrap -->
+<!-- select2 -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet"/>
+    <!-- Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="../bootstrap/css/dopstyle.css" rel="stylesheet" media="screen">
