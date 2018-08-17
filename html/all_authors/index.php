@@ -4,13 +4,16 @@
     $keywords = "Ключевые слова страницы сайта";
     $authors_active = "active";
     include '../header.php';
+    if (isset($_GET['page'])){
+        $page = $_GET['page'];
+    }else $page = 1;
 ?>
 <div class="content">
     <h1>Список авторов</h1>
     <div class="sortirovka">
         <p>
             <span class="philtr">Фильтрация:</span>
-            <input type="button" class="btn_philtr" id="aut_alf" value="по алфавиту" onclick="location.href='<?php if (isset ($page)) {echo "&";} else {echo "?";} ?>filtration=2'" />
+            <input type="button" class="btn_philtr" id="aut_alf" value="по алфавиту" onclick="location.href='?filtration=2'"/>
         </p>
     </div>
     <table class="col-md-12">
@@ -24,9 +27,7 @@
                 $filtration = $_GET['filtration'];
             }else $filtration = 1;
             //номер страницы
-            if (isset($_GET['page'])){
-                $page = $_GET['page'];
-            }else $page = 1;
+
             $previous = $page - 1;
             $next = $page + 1;
             //количество выводимых записей

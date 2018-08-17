@@ -10,7 +10,7 @@
         <h1>5 лучших книг</h1>
         <ol class="square">
             <?php
-                $stmt = $pdo->query('select b.id as id_b, avg(rating) as rat, name_book from books as b join reviews as r where r.id_book = b.id group by b.id order by rat desc limit 5');
+                $stmt = $pdo->query('select b.id as id_b, round(avg(rating),1) as rat, name_book from books as b join reviews as r where r.id_book = b.id group by b.id order by rat desc limit 5');
                 $stmt->setFetchMode(PDO::FETCH_ASSOC);
                 while ($row = $stmt->fetch()) {
                     $id_b = $row['id_b'];

@@ -110,7 +110,7 @@ table {
 .dop_div {
     margin-top:60px;
 }
-#rating_error, #name_error, #message_error, #msg_error {
+#rating_error, #name_error, #message_error, #msg_error, #search_info {
     color: red;
 }
 #end_info {
