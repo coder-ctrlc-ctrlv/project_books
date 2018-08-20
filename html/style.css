@@ -209,6 +209,7 @@ table {
     font-weight: 700;
 }
 .btn_philtr {
+    padding: 5px;
     background-color: white;
     border: 1px solid black;
     border-radius: 17px;
@@ -274,7 +275,7 @@ table {
     display: block;
 }
 /* Убираем текст с переключателей
-* и оставляем иконки на малых экранах
+ и оставляем иконки на малых экранах
 */
 @media screen and (max-width: 680px) {
     .tabs>label {
@@ -286,7 +287,7 @@ table {
     }
 }
 /* Изменяем внутренние отступы
-*  переключателей для малых экранов
+  переключателей для малых экранов
 */
 @media screen and (max-width: 400px) {
     .tabs>label {

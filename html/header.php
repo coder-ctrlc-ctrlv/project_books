@@ -6,7 +6,7 @@
     <meta name="keywords" content="<?php echo $keywords ?>">
     <meta name="Description" content=” <?php echo $description ?> “>
 <!-- style -->
-    <link rel="stylesheet" href="../style.css"
+    <link rel="stylesheet" href="../style.css"/>
 <!-- select2 -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet"/>
     <!-- Bootstrap -->
