@@ -29,45 +29,40 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form id="login-form" action="login_user.php" method="post" role="form" style="display: block;">
+                                <form id="login-form" action="" method="post" role="form" style="display: block;">
                                     <div class="form-group">
                                         <label for="username">Логин</label>
-                                        <input type="text" name="username" id="username1" tabindex="1" class="form-control" placeholder="Введите логин" value="">
-                                        <p id="error1"></p>
+                                        <input type="text" name="username" id="username1" tabindex="1" class="form-control" placeholder="Введите логин" value="" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Пароль</label>
-                                        <input type="password" name="password" id="password1" tabindex="2" class="form-control" placeholder="Введите пароль">
-                                        <p id="error2"></p>
+                                        <input type="password" name="password" id="password1" tabindex="2" class="form-control" placeholder="Введите пароль" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-sm-6 col-sm-offset-3">
                                                 <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Авторизироваться">
+                                                <p id="aut_err"></p>
                                             </div>
                                         </div>
                                     </div>
                                 </form>
-                                <form id="register-form" action="save_user.php" method="post" role="form" style="display: none;">
+                                <form id="register-form" action="" method="post" role="form" style="display: none;">
                                     <div class="form-group">
                                         <label for="username">Логин</label>
-                                        <input type="text" name="username" id="username2" tabindex="1" class="form-control" placeholder="Введите логин" value="">
-                                        <p id="error3"></p>
+                                        <input type="text" name="username" id="username2" tabindex="1" class="form-control" placeholder="Введите логин" value="" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">E-mail</label>
-                                        <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Введите Email" value="">
-                                        <p id="error4"></p>
+                                        <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Введите Email" value="" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="password">Пароль</label>
-                                        <input type="password" name="password" id="password2" tabindex="2" class="form-control" placeholder="Введите пароль">
-                                        <p id="error5"></p>
+                                        <input type="password" name="password" id="password2" tabindex="2" class="form-control" placeholder="Введите пароль" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="confirm-password">Повторите пароль</label>
-                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Введите свой пароль еще раз">
-                                        <p id="error6"></p>
+                                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Введите свой пароль еще раз" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
@@ -84,6 +79,42 @@
             </div>
         </div>
     </div>
+<!--Обработка авторизации-->
+    <?php
+        if ( !empty($_POST['password']) and !empty($_POST['username']) ) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $username_1 = $username;
+            $host = '127.0.0.1';
+            $db = 'base_for_books';
+            $user = 'user';
+            $pass = 'user';
+            $charset = 'utf8';
+            $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+            $opt = [
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_EMULATE_PREPARES => false,
+            ];
+            $pdo = new PDO($dsn, $user, $pass, $opt);
+            $stmt = $pdo->prepare('select * from users where username = :username or email = :username_1');
+            $stmt->execute(array(':username' => $username, ':username_1' => $username_1));
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $row = $stmt->fetch();
+            if (!empty($row) and $password == $row['password']){
+                session_start();
+                $_SESSION['auth'] = true;
+                $_SESSION['username'] = $username;?>
+                <script>document.location.href='../index.php'</script><?php
+            } else {?>
+                <script> $("#aut_err").text ("Неверный логин или пароль!")</script><?php
+            }
+        }
+    ?>
+<!--Обработка регистрации-->
+    <?php
+        
+    ?>
     <script>
         $(function() {
             $('#login-form-link').click(function(e) {

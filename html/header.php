@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <?php session_start();?>
     <meta charset="UTF-8">
     <title><?php echo $title ?></title>
     <meta name="keywords" content="<?php echo $keywords ?>">
@@ -15,6 +16,11 @@
     <link href="../bootstrap/css/dopstyle.css" rel="stylesheet" media="screen">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <body>
+    <?php
+        if (empty($_SESSION)) {?>
+            <script>alert ('<?php echo $_SESSION['username']?>')</script><?php
+        }
+    ?>
 <!-- Оболочка -->
     <div class="wrapper">
 <!-- Весь контент -->

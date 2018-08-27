@@ -70,7 +70,7 @@
             $previous = $page - 1;
             $next = $page + 1;
             //количество выводимых записей
-            $kolvo = 1;
+            $kolvo = 10;
             //номер записи, с которой начинается вывод на странице
             $start = ($page * $kolvo) - $kolvo;
             //количество всех записей
@@ -90,10 +90,10 @@
             $str_pag = ceil($all_record / $kolvo);
             //изначальный запрос
             if ($filtration == 1) {
-                $stmt = $pdo->prepare('SELECT name_book, date_of_writing, book_size, age_limit, round(avg(rating),1) as rat from books as b join reviews as r on r.id_book = b.id group by b.id  limit :start, :kolvo');
+                $stmt = $pdo->prepare('SELECT b.id as id_b, name_book, date_of_writing, book_size, age_limit, round(avg(rating),1) as rat from books as b join reviews as r on r.id_book = b.id group by b.id  limit :start, :kolvo');
                 $stmt->execute(array(':start' => $start, ':kolvo' => $kolvo));
                 foreach ($stmt as $row) {
-                    $id_b=$row['id'];
+                    $id_b=$row['id_b'];
                     echo "<tr>";
                     echo "<td class='name' onClick='location.href=\"../book?id=$id_b\"'>" . $row['name_book'] . "</td>";
                     echo "<td>" . $row['date_of_writing'] . "</td>";

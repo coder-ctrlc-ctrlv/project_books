@@ -97,3 +97,9 @@
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
+
+#aut_err {
+    margin-top: 10px;
+    color: red;
+    text-align: center;
+}
